@@ -1,0 +1,9 @@
+export default function LoginLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  // Login page doesn't need authentication check
+  // It bypasses the parent licensing layout
+  return children;
+}
