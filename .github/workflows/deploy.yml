@@ -40,6 +40,11 @@ jobs:
       - name: Copy build to server
         run: |
           rsync -avz --delete \
+            --exclude='ecosystem.config.js' \
+            --exclude='.env.server' \
+            --exclude='.env.local' \
+            --exclude='logs/' \
+            --exclude='.data/' \
             -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" \
             .next/standalone/ \
             ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/ubuntu/apps/homeopms/
