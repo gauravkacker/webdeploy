@@ -49,6 +49,12 @@ jobs:
             .next/standalone/ \
             ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/ubuntu/apps/homeopms/
 
+      - name: Copy ecosystem config
+        run: |
+          scp -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no \
+            ecosystem.config.js \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/ubuntu/apps/homeopms/ecosystem.config.js
+
       - name: Restart PM2
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -59,5 +65,6 @@ jobs:
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             nvm use 20
-            pm2 delete homeopms || true
-            pm2 start /home/ubuntu/apps/homeopms/ecosystem.config.js --only homeopms
+            cd /home/ubuntu/apps/homeopms
+            pm2 startOrRestart ecosystem.config.js --only homeopms
+            pm2 save
