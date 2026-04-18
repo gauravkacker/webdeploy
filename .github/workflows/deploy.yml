@@ -52,7 +52,7 @@ jobs:
       - name: Copy ecosystem config
         run: |
           scp -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no \
-            ecosystem.config.js \
+            ${{ github.workspace }}/ecosystem.config.js \
             ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/ubuntu/apps/homeopms/ecosystem.config.js
 
       - name: Restart PM2
