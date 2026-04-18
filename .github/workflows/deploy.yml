@@ -28,7 +28,7 @@ jobs:
           NEXT_TELEMETRY_DISABLED: 1
           NEXT_PUBLIC_DATA_MODE: server
           DATABASE_URL: postgresql://homeopms:homeopms123@localhost:5432/homeopms
-        run: npm run build
+        run: npx --no-install next build
 
       - name: Setup SSH key
         run: |
