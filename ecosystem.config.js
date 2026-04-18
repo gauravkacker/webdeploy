@@ -28,6 +28,7 @@ module.exports = {
       env: {
         NODE_ENV: 'production',
         PORT: 3000,
+        HOSTNAME: '0.0.0.0',
         NEXT_PUBLIC_DATA_MODE: 'server',
         DATABASE_URL: 'postgresql://homeopms:homeopms123@localhost:5432/homeopms',
         SERVER_DB_DIR: '/home/ubuntu/apps/homeopms/.data',
@@ -40,7 +41,7 @@ module.exports = {
       log_date_format: 'YYYY-MM-DD HH:mm:ss Z',
       merge_logs: true,
       autorestart: true,
-      watch: true,
+      watch: false,
       max_memory_restart: '500M',
       ignore_watch: ['node_modules', '.next', 'logs'],
       listen_timeout: 10000,
