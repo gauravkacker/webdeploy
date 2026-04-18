@@ -54,5 +54,4 @@ jobs:
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             nvm use 20
-            cd ~/apps/homeopms
-            pm2 delete homeopms && pm2 start ecosystem.config.js --only homeopms
+            pm2 delete homeopms && pm2 start /home/ubuntu/apps/homeopms/ecosystem.config.js --only homeopms
